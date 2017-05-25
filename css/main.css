@@ -23,7 +23,9 @@ button{
   height: 25px;
   width: 140px;
 }
-
+.removeFav{
+  width: 220px;
+}
 #searchedGifs{
   width: 50%;
   float: left;

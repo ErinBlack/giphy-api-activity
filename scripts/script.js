@@ -81,7 +81,7 @@ $('#showResults').on('click', function(){
 
 $('#showFavorites').on('click', function(){
   $('#favorites').toggle();
-})
+});
 
 
 
