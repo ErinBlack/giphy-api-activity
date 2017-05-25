@@ -7,14 +7,28 @@
   <script type="text/javascript" src="scripts/script.js"></script>
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab" rel="stylesheet">
   <title>Giphy API Activity</title>
 </head>
 
 <body>
-  <h1>Giphy API Activity</h1>
-  <input type="text" name="search" placeholder="search" value="" id="txtSearch">
-  <button type="button" name="button" id="cmdSearch">Search</button>
-  <div id='searchResults'></div>
+  <div id="wrapper">
+    <h1>Giphy API Activity</h1>
+    <input type="text" name="search" placeholder="search" value="" id="txtSearch">
+    <button type="button" name="button" id="cmdSearch">Search</button>
+    <div class="allResults">
+      <div id="searchedGifs">
+        <h2>Search Results</h2>
+        <button class="showCategory" id="showResults">Hide or Show Results</button>
+        <div id='searchResults'></div>
+      </div>
+      <div class="favoritesList">
+        <h2>My Favorites</h2>
+        <button class="showCategory" id="showFavorites">Hide or Show Favorites</button>
+        <div id="favorites"></div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

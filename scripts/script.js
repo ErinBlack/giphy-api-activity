@@ -1,5 +1,6 @@
 console.log('js/jq sourced!');
-
+var favorites = [];
+var favoritesNum = 0;
 // on-click function
 $(document).on('click', '#cmdSearch', function(){
   console.log('cmdSearch clicked');
@@ -33,8 +34,11 @@ function searchResponse(response) {
  console.log('length of data', response.data.length);
 
  for (var i = 0; i < response.data.length; i++) {
-   var singleGif = $('<div class="gifCont"><img src="' + response.data[i].images.downsized.url + '">' + '<button id="deleteGif">remove</button></div>');
-   $('#searchResults').append(singleGif);
+   var singleGif = $('<div class="gifCont"><img class="gifDisplay" src="' +
+                     response.data[i].images.downsized.url + '">' +
+                     '<div class="buttonDiv"><button class="deleteGif">remove</button>' +
+                     '<button class="addFav">Add to Favorites</button></div></div>');
+   $('#searchResults').prepend(singleGif);
  }
 
 }
@@ -42,13 +46,42 @@ function searchResponse(response) {
 }
 
 //remove the gif with deleteGif button
-$('#searchResults').on('click', '#deleteGif', function(){
+$('#searchResults').on('click', '.deleteGif', function(){
   console.log('delete gif button working');
   $(this).parent().remove();
+}); //end remove gif
+
+//Add gif to favorites List
+$('#searchResults').on('click', '.addFav', function(){
+  console.log('the Add Fav button is working');
+  //take image to become favorites and turn it into image tag
+  var newFav = $(this).parent().parent().find( 'img' ).attr("src");
+  var newFavImg = '<div class"favGif"><img class="gifDisplay" src="'+ newFav +
+    '"><div class="buttonDiv"><button class="removeFav ">Remove from Favorites</button></div></div>';
+  //push new image to the favorites array
+  favorites.push(newFavImg);
+  $(this).parent().parent().remove();
+
+  //append the favorite array to the DOM
+  $('#favorites').append(favorites[favoritesNum]);
+  favoritesNum ++;
+  //remove
+});// end add gif to favorites
+
+//remove from favorites button
+$('.favoritesList').on('click', '.removeFav',  function(){
+  $(this).parent().remove();
 });
+
 }
 
+$('#showResults').on('click', function(){
+  $('#searchResults').toggle();
+});
 
+$('#showFavorites').on('click', function(){
+  $('#favorites').toggle();
+})
 
 
 
