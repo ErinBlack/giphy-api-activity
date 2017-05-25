@@ -70,7 +70,7 @@ $('#searchResults').on('click', '.addFav', function(){
 
 //remove from favorites button
 $('.favoritesList').on('click', '.removeFav',  function(){
-  $(this).parent().remove();
+  $(this).parent().parent().remove();
 });
 
 }
